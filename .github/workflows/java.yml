@@ -78,12 +78,23 @@ jobs:
       uses: medyagh/setup-minikube@latest
       with:
         minikube-version: 'latest'
+
+        
+    # Step 3: Replace image name in deployment.yaml using sed
+    - name: Replace image in deployment.yaml
+      run: |
+        IMAGE_NAME="${{ secrets.DOCKER_USERNAME }}/java-app:${{ github.run_number }}"
+        sed -i "s|${{ secrets.DOCKER_USERNAME }}/java-app:latest|$IMAGE_NAME|g" k8s/deployment.yaml
+   # varify deployment yaml is updated with latest image
+    - name: varify deployment yaml is updated with latest image
+      run: |
+        cat k8s/deployment.yaml
+ 
  
     # Step 5: Apply Kubernetes Manifest
     - name: Deploy using Kubernetes Manifest
       run: |
         pwd
-        ls
         kubectl apply -f k8s/deployment.yaml
         kubectl apply -f k8s/service.yaml
     # Step 4: Verify Pods and Service Status
