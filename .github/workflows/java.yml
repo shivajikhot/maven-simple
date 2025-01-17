@@ -96,6 +96,6 @@ jobs:
         sleep 10
         kubectl get pods
         kubectl get svc
-        kubectl port-forward svc/my-app-service 8080:8080 &
+        kubectl port-forward svc/java-app 8080:8080 &
         sleep 10
         curl http://localhost:8080
