@@ -85,6 +85,11 @@ jobs:
         pwd
         kubectl apply -f k8s/deployment.yaml
         kubectl apply -f k8s/service.yaml
+
+    - name: Describe the Pod
+      run: |         
+        POD_NAME=$(kubectl get pods -l app=java-app -o jsonpath='{.items[0].metadata.name}')
+        kubectl describe pod $POD_NAME
     # Step 4: Verify Pods and Service Status
     - name: Verify Application is Running
       run: |
