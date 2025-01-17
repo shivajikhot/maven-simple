@@ -90,6 +90,8 @@ jobs:
       run: |         
         POD_NAME=$(kubectl get pods -l app=java-app -o jsonpath='{.items[0].metadata.name}')
         kubectl describe pod $POD_NAME
+
+        
     # Step 4: Verify Pods and Service Status
     - name: Verify Application is Running
       run: |
@@ -99,3 +101,11 @@ jobs:
         kubectl port-forward svc/java-app 8080:8080 &
         sleep 10
         curl http://localhost:8080
+
+    - name: Fetch Pod Logs
+      run: |
+        POD_NAME=$(kubectl get pods -l app=java-app -o jsonpath='{.items[0].metadata.name}')
+        kubectl logs $POD_NAME
+ 
+    - name: Check Kubernetes Events
+      run: kubectl get events --sort-by='.metadata.creationTimestamp'
