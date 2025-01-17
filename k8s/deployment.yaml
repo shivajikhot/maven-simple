@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: java-app
-        image: ${{ secrets.DOCKER_USERNAME }}/java-app:latest
+        image: 8050588/java-app:latest
         ports:
         - containerPort: 8080
