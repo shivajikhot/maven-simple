@@ -83,5 +83,6 @@ jobs:
     - name: Deploy using Kubernetes Manifest
       run: |
         pwd
+        ls
         kubectl apply -f k8s/deployment.yaml
         kubectl apply -f k8s/service.yaml
