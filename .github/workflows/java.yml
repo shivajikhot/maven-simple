@@ -86,3 +86,12 @@ jobs:
         ls
         kubectl apply -f k8s/deployment.yaml
         kubectl apply -f k8s/service.yaml
+    # Step 4: Verify Pods and Service Status
+    - name: Verify Application is Running
+      run: |
+        sleep 10
+        kubectl get pods
+        kubectl get svc
+        kubectl port-forward svc/my-app-service 8080:8080 &
+        sleep 10
+        curl http://localhost:8080
