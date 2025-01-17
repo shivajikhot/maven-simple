@@ -82,5 +82,6 @@ jobs:
     # Step 5: Apply Kubernetes Manifest
     - name: Deploy using Kubernetes Manifest
       run: |
+        pwd
         kubectl apply -f k8s/deployment.yaml
         kubectl apply -f k8s/service.yaml
