@@ -41,7 +41,7 @@ jobs:
     # Build the Docker image
     - name: Build Docker image
       run: |
-        IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/my-app
+        IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/java-app
         IMAGE_TAG=${{ github.run_number }}
         docker build -t $IMAGE_NAME:$IMAGE_TAG .
         docker tag $IMAGE_NAME:$IMAGE_TAG $IMAGE_NAME:latest
