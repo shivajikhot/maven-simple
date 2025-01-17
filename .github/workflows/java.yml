@@ -49,7 +49,7 @@ jobs:
    # Push the Docker image with the version tag
     - name: Push Docker image with dynamic version
       run: |
-          IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/my-app
+          IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/java-app
           IMAGE_TAG=${{ github.run_number }}
           docker push $IMAGE_NAME:$IMAGE_TAG
           docker push $IMAGE_NAME:latest
