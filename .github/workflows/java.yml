@@ -56,9 +56,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-   #  # Step 1: Check out code
-   #  - name: Checkout Code
-   #    uses: actions/checkout@v3
+    # Step 1: Check out code
+    - name: Checkout Code
+      uses: actions/checkout@v3
 
    # # Step 2: Log in to Docker Hub
    #  - name: Log in to Docker Hub
